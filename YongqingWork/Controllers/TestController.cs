@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using YongqingWork.Services;
+using YongqingWork.ViewModels;
 
 namespace YongqingWork.Controllers
 {
@@ -46,6 +47,27 @@ namespace YongqingWork.Controllers
                 return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
             }
         }
+
+        /// <summary>
+        /// 新增客戶訂單
+        /// </summary>
+        /// <param name="cityName"></param>
+        /// <returns></returns>
+        [HttpGet("PostCustomerOrders")]
+        public async Task<IActionResult> PostCustomerOrders(PostCustomerOrderViewModel data)
+        {
+            try
+            {
+                var result = await _testService.PostCustomerOrders(data);                
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
+            }
+        }
+
 
     }
 }

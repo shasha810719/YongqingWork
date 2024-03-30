@@ -1,7 +1,7 @@
 ﻿namespace YongqingWork.ViewModels
 {
     /// <summary>
-    /// 顧客訂單用ViewModel
+    /// 取得顧客訂單用ViewModel
     /// </summary>
     public class CustomerOrderViewModel
     {

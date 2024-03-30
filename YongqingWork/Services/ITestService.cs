@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using YongqingWork.ViewModels;
 
 namespace YongqingWork.Services
 {
@@ -15,5 +16,12 @@ namespace YongqingWork.Services
         /// <param name="orderId"></param>
         /// <returns></returns>
         Task<IActionResult> GetCustomerOrderList(int orderId);
+
+        /// <summary>
+        /// 新增客戶訂單
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        Task<IActionResult> PostCustomerOrders(PostCustomerOrderViewModel data);
     }
 }

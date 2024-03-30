@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using YongqingWork.Repositories;
+using YongqingWork.ViewModels;
 
 namespace YongqingWork.Services
 {
@@ -37,6 +38,28 @@ namespace YongqingWork.Services
 
             return new OkObjectResult(result);
 
+        }
+
+        /// <summary>
+        /// 新增客戶訂單
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>        
+        public async Task<IActionResult> PostCustomerOrders(PostCustomerOrderViewModel data)
+        {
+
+            //驗證資料正確性
+            //Vaild()
+
+            var result = await _testRepository.PostCustomerOrders(data);
+
+            if (result == false)
+            {
+                return new StatusCodeResult((int)HttpStatusCode.InternalServerError);
+            }
+            
+            return new OkResult();
+            
         }
     }
 }
