@@ -10,6 +10,7 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 //µù¥UAutofac
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new ServiceModule()));
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new RepositoryModule()));
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new DatebaseModule()));
 
 // Add services to the container.
 
