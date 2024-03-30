@@ -3,8 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace YongqingWork.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface ITestService
     {
-        Task<IActionResult> GetCustomerList(string cityName);
+
+        /// <summary>
+        /// 取得客戶訂單列表
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        Task<IActionResult> GetCustomerOrderList(int orderId);
     }
 }

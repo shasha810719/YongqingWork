@@ -1,9 +1,13 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using YongqingWork.Repositories;
 
 namespace YongqingWork.Services
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class TestService : ITestService
     {
         private ITestRepository _testRepository;
@@ -17,18 +21,19 @@ namespace YongqingWork.Services
         }
 
         /// <summary>
-        /// 取得客戶列表
+        /// 取得客戶訂單列表
         /// </summary>
-        /// <param name="cityName"></param>
+        /// <param name="orderId"></param>
         /// <returns></returns>
-        public async Task<IActionResult> GetCustomerList(string cityName)
+        public async Task<IActionResult> GetCustomerOrderList(int orderId)
         {
-            if (string.IsNullOrEmpty(cityName))
-            {
-                return new BadRequestObjectResult("請輸入城市名稱");
-            }
 
-            var result = await _testRepository.GetCustomerList(cityName);
+            var result = await _testRepository.GetCustomerOrderList(orderId);
+
+            if (result == null || result.Count() == 0)
+            {
+                return null;
+            }
 
             return new OkObjectResult(result);
 

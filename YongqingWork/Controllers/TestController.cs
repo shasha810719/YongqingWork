@@ -23,24 +23,29 @@ namespace YongqingWork.Controllers
         }
 
         /// <summary>
-        /// 取得客戶列表
+        /// 取得客戶訂單列表
         /// </summary>
         /// <param name="cityName"></param>
         /// <returns></returns>
-        [HttpGet("GetCustomerList")]
-        public async Task<IActionResult> GetCustomerList(string cityName)
+        [HttpGet("GetCustomerOrderList")]
+        public async Task<IActionResult> GetCustomerOrderList(int orderId)
         {
             try
             {
-                var result = await _testService.GetCustomerList(cityName);
+                var result = await _testService.GetCustomerOrderList(orderId);
 
+                if (result == null)
+                {
+                    return StatusCode(HttpStatusCode.NotFound.GetHashCode(), $"此訂單{orderId}查無資料");
+                }
+                                
                 return Ok(result);
             }
             catch (Exception ex)
             {
                 return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
             }
-
         }
+
     }
 }
