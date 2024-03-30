@@ -53,7 +53,7 @@ namespace YongqingWork.Controllers
         /// </summary>
         /// <param name="cityName"></param>
         /// <returns></returns>
-        [HttpGet("PostCustomerOrders")]
+        [HttpPost("PostCustomerOrders")]
         public async Task<IActionResult> PostCustomerOrders(PostCustomerOrderViewModel data)
         {
             try
